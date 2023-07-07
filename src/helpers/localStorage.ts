@@ -24,10 +24,12 @@ export const getLocalStorage = <T>(key: string): T | null => {
 };
 
 /**
- * The function sets a value in the local storage using a specified key.
- * @param {string} key - A string representing the key under which the value will be stored in the local storage.
- * @param {any} value - The value parameter can be any data type, such as a string, number, boolean, object, or array.
+ * The function `setLocalStorage` stores a value in the browser's local storage, converting it to a JSON string if it is an object.
+ * @param {string} key - The key parameter is a string that represents the key under which the value will be stored in the local storage.
+ * @param {any} value - The value parameter can be any data type, including primitive types (such as string, number, boolean) or complex types (such as objects or arrays).
  */
 export const setLocalStorage = (key: string, value: any) => {
-  localStorage.setItem(key, value);
+  if (typeof value === 'object')
+    localStorage.setItem(key, JSON.stringify(value));
+  else localStorage.setItem(key, value);
 };
