@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { getLocalStorage } from '../helpers/localStorage';
 
 interface ISearch {
   earthDate: string;
@@ -11,7 +12,7 @@ interface IStore {
 
 const useStore = create<IStore>()((set) => ({
   search: {
-    earthDate: '',
+    earthDate: getLocalStorage<string>('earthDate') || '',
   },
   setSearch: (search) => set(() => ({ search })),
 }));

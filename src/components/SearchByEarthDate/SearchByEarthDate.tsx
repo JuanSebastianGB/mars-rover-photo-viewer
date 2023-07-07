@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getCurrentDate } from '../../helpers';
+import { setLocalStorage } from '../../helpers/localStorage';
 import useStore from '../../hooks/useStore';
 import styles from './SearchByEarthDate.module.css';
 
@@ -10,8 +11,10 @@ const SearchByEarthDate: React.FC<SearchByEarthDateProps> = () => {
   const [inputDate, setInputDate] = useState(
     !!search.earthDate ? search.earthDate : getCurrentDate()
   );
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputDate(e.target.value);
+    setLocalStorage('earthDate', e.target.value);
+  };
   return (
     <div className={styles.searchbyearthdate}>
       <input type="date" value={inputDate} onChange={handleChange} />
