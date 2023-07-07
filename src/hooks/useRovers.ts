@@ -6,7 +6,8 @@ export const useRovers = (
   rover: RoverNameType,
   earthDate: string,
   sol: number,
-  applySol: boolean
+  applySol: boolean,
+  selectValue: string
 ) => {
   const [photos, setPhotos] = useState<PhotoModel[]>([]);
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ export const useRovers = (
   useEffect(() => {
     setLoading(true);
     setError(null);
-    getRoverPhotos({ rover, earthDate, sol, applySol })
+    getRoverPhotos({ rover, earthDate, sol, applySol, selectValue })
       .then((data) => {
         setPhotos(data.photos);
       })
@@ -26,7 +27,7 @@ export const useRovers = (
       .finally(() => {
         setLoading(false);
       });
-  }, [rover, earthDate, sol, applySol]);
+  }, [rover, earthDate, sol, applySol, selectValue]);
 
   return { photos, loading, error };
 };

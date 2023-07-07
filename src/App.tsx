@@ -4,9 +4,10 @@ import './App.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Navbar, SearchByFilter } from './components';
 import { menuLinks } from './models';
+import { SelectValueProvider } from './pages/context';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
-const RoverPage = lazy(() => import('./pages/RoverPage'));
+const RoverPage = lazy(() => import('./pages/RoverPage/RoverPage'));
 
 function App() {
   return (
@@ -23,7 +24,14 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/rovers/:name" element={<RoverPage />} />
+          <Route
+            path="/rovers/:name"
+            element={
+              <SelectValueProvider>
+                <RoverPage />
+              </SelectValueProvider>
+            }
+          />
         </Routes>
       </Router>
     </Suspense>
