@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom';
-import { getCurrentDate } from '../helpers';
 import { useRovers } from '../hooks';
+import useStore from '../hooks/useStore';
 import { RoverNameType } from '../models';
 
 function RoverPage() {
   const { name } = useParams<{ name: RoverNameType }>();
-  const currentDate = getCurrentDate();
   if (!name) return null;
-  const { photos, loading, error } = useRovers(name, currentDate);
+  const {
+    search: { earthDate },
+  } = useStore((state) => state);
+  const { photos, loading, error } = useRovers(name, earthDate);
 
   if (error) return <h1>{error}</h1>;
 

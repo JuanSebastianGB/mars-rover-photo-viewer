@@ -1,5 +1,11 @@
+import useStore from '../hooks/useStore';
+
 function HomePage() {
-  return <h2>Home page</h2>;
+  const {
+    search: { earthDate },
+  } = useStore((state) => state);
+
+  return <div>Home page {earthDate}</div>;
 }
 
 export default HomePage;

@@ -21,7 +21,7 @@ export const useRovers = (rover: RoverNameType, earthDate: string) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [rover]);
+  }, [rover, earthDate]);
 
   return { photos, loading, error };
 };

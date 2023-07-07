@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { getCurrentDate } from '../../helpers';
+import useStore from '../../hooks/useStore';
 import styles from './SearchByEarthDate.module.css';
 
-export type SearchByEarthDateProps = {
-  earthDate: string;
-  changeDate: (date: string) => void;
-};
+export type SearchByEarthDateProps = {};
 
-const SearchByEarthDate: React.FC<SearchByEarthDateProps> = ({
-  changeDate,
-}) => {
-  const [inputDate, setInputDate] = useState(getCurrentDate());
+const SearchByEarthDate: React.FC<SearchByEarthDateProps> = () => {
+  const { search, setSearch } = useStore((state) => state);
+  const [inputDate, setInputDate] = useState(
+    !!search.earthDate ? search.earthDate : getCurrentDate()
+  );
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputDate(e.target.value);
   return (
     <div className={styles.searchbyearthdate}>
       <input type="date" value={inputDate} onChange={handleChange} />
-      <button onClick={() => changeDate(inputDate)}>Search</button>
-      ...
+      <button onClick={() => setSearch({ earthDate: inputDate })}>
+        Search
+      </button>
     </div>
   );
 };
