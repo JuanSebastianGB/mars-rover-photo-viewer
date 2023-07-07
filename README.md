@@ -10,7 +10,7 @@ This project is a React application that connects to the NASA API to retrieve an
 - **Camera Filtering**: Users can filter the rover photos by the camera used to capture them. This feature allows users to narrow down the selection based on their preferences.
 - **Default Date**: By default, the app displays the latest photos available for the current day 🆗.
 - **Search by Earth Day**: Users can search for photos based on a specific 'Earth Day' date. For example, entering the date '2020-09-22' will show the corresponding photos taken on that day 🆗.
-- **Search by Sol Date**: Users can search for photos based on the 'Sol' date. For example, entering the Sol date '2890' will display photos taken on that specific Martian day.
+- **Search by Sol Date**: Users can search for photos based on the 'Sol' date. For example, entering the Sol date '2890' will display photos taken on that specific Martian day 🆗.
 
 ## Optional Features
 

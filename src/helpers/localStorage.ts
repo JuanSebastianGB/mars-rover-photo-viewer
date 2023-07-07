@@ -10,10 +10,13 @@ export const getLocalStorage = <T>(key: string): T | null => {
 
   if (item) {
     try {
-      const parsedItem = JSON.parse(item);
+      const parsedItem = JSON.parse(item) as T;
       return parsedItem;
     } catch (error) {
-      return item as unknown as T;
+      if (typeof item === 'boolean' || typeof item === 'number') {
+        return item as unknown as T;
+      }
+      return null;
     }
   }
 

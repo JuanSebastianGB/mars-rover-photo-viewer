@@ -7,9 +7,9 @@ function RoverPage() {
   const { name } = useParams<{ name: RoverNameType }>();
   if (!name) return null;
   const {
-    search: { earthDate },
+    search: { earthDate, sol, applySol },
   } = useStore((state) => state);
-  const { photos, loading, error } = useRovers(name, earthDate);
+  const { photos, loading, error } = useRovers(name, earthDate, sol, applySol);
 
   if (error) return <h1>{error}</h1>;
 
@@ -23,6 +23,10 @@ function RoverPage() {
             <div key={photo.id}>
               <img src={photo.img_src} alt={photo.img_src} />
               <p>{photo.earth_date}</p>
+              <div>
+                sol:
+                {photo.sol}
+              </div>
             </div>
           ))
         : null}

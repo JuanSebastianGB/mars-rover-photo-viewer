@@ -1,1 +1,1 @@
-export { default as SearchByEarthDate } from './SearchByEarthDate';
+export { default as SearchByFilter } from './SearchByFilter';

@@ -46,18 +46,17 @@ a {
 }
 
 /* Reset form elements */
-button,
-input,
-optgroup,
-select,
-textarea {
+button:not([type='checkbox']),
+input:not([type='checkbox']),
+optgroup:not([type='checkbox']),
+select:not([type='checkbox']),
+textarea:not([type='checkbox']) {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
-  appearance: none;
   outline: none;
   background: none;
 }

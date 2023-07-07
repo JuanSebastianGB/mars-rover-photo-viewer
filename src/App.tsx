@@ -1,9 +1,8 @@
 import { Suspense, lazy } from 'react';
 import './App.css';
-import { SearchByEarthDate } from './components/SearchByEarthDate';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Navbar } from './components';
+import { Navbar, SearchByFilter } from './components';
 import { menuLinks } from './models';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -13,7 +12,7 @@ function App() {
   return (
     <Suspense fallback={<> Loading...</>}>
       <Router>
-        <SearchByEarthDate />
+        <SearchByFilter />
         <Navbar
           links={[
             { link: menuLinks.HOME, text: 'Home' },
