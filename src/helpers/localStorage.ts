@@ -6,7 +6,8 @@
  * @returns The function `getLocalStorage` returns a value of type `T` or `null`.
  */
 export const getLocalStorage = <T>(key: string): T | null => {
-  const item = localStorage.getItem(key);
+  const item =
+    typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
 
   if (item) {
     try {
