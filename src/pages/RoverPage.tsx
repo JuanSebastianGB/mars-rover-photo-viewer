@@ -19,7 +19,7 @@ function RoverPage() {
     <div>
       <h2>Rovers {name} page</h2>
       {photos
-        ? photos?.map((photo) => (
+        ? photos?.slice(0, 3)?.map((photo) => (
             <div key={photo.id}>
               <img src={photo.img_src} alt={photo.img_src} />
               <p>{photo.earth_date}</p>

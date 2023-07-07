@@ -22,6 +22,7 @@ export const getRoverPhotos = async ({
   applySol = false,
 }: Props) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
+  if (!API_KEY) throw new Error('API key is missing or invalid');
 
   const URL =
     `${BASE_URL}${rover}/photos?earth_date=${earthDate}&api_key=${API_KEY}` +

@@ -11,7 +11,7 @@ interface ISearch {
 interface IStore {
   search: ISearch;
   setSearch: (search: ISearch) => void;
-  changeApplySol: (applySol: boolean) => void;
+  changeApplySol: () => void;
 }
 
 const useStore = create<IStore>()((set) => ({
