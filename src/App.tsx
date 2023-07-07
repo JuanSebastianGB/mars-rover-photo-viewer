@@ -1,28 +1,27 @@
-import { Fragment } from 'react';
+import { useState } from 'react';
 import './App.css';
+import { SearchByEarthDate } from './components/SearchByEarthDate';
 import { getCurrentDate } from './helpers';
-import { useRovers } from './hooks';
+
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Navbar } from './components';
+import { HomePage, RoverPage } from './pages';
 
 function App() {
-  const { photos, loading, error } = useRovers();
+  const currentDate = getCurrentDate();
+  const [earthDate, setEarthDate] = useState(currentDate);
 
-  if (error) return <h1>{error}</h1>;
-
-  if (loading) return <h1>Loading...</h1>;
-
-  if (photos.length === 0) return <div>No photos found</div>;
+  const changeDate = (date: string) => setEarthDate(date);
 
   return (
-    <Fragment>
-      <h1>Mars Rover App</h1>
-      Current Data {getCurrentDate()}
-      {photos?.map((photo) => (
-        <div key={photo.id}>
-          <img src={photo.img_src} alt={photo.img_src} />
-          <p>{photo.earth_date}</p>
-        </div>
-      ))}
-    </Fragment>
+    <Router>
+      <SearchByEarthDate earthDate={earthDate} changeDate={changeDate} />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/rovers/:name" element={<RoverPage />} />
+      </Routes>
+    </Router>
   );
 }
 
