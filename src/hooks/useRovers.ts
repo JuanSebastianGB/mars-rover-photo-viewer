@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { PhotoModel } from '../models';
+import { PhotoModel, RoverNameType } from '../models';
 import { getRoverPhotos } from '../services';
 
-export const useRovers = () => {
+export const useRovers = (rover: RoverNameType, earthDate: string) => {
   const [photos, setPhotos] = useState<PhotoModel[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -10,7 +10,7 @@ export const useRovers = () => {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    getRoverPhotos({})
+    getRoverPhotos({ rover, earthDate })
       .then((data) => {
         setPhotos(data.photos);
       })
@@ -21,7 +21,7 @@ export const useRovers = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [rover]);
 
   return { photos, loading, error };
 };

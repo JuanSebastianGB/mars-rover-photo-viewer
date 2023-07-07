@@ -16,7 +16,9 @@ export interface Camera2 {
 }
 
 export enum RoverOptions {
-  Curiosity = 'curiosity',
-  Opportunity = 'opportunity',
-  Spirit = 'spirit',
+  curiosity = 'curiosity',
+  opportunity = 'opportunity',
+  spirit = 'spirit',
 }
+
+export type RoverNameType = keyof typeof RoverOptions;
