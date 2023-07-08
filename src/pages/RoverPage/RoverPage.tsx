@@ -12,7 +12,6 @@ function RoverPage() {
   const { selectValue, page } = useSelectValue();
   const {
     search: { earthDate, sol, applySol },
-    favorites,
   } = useStore((state) => state);
   const { photos, loading, error, hasNextPage } = useRovers(
     name,
@@ -28,12 +27,8 @@ function RoverPage() {
   return (
     <Fragment>
       <Title>Rover {name}</Title>
-      <h2>Rovers {name}</h2>
-      <h2>Page {page} </h2>
       <SelectCamera />
-      <div>Selected value: {selectValue}</div>
       <div>Qty {photos?.length}</div>
-      <div>Favorites:{JSON.stringify(favorites, null, 2)} </div>
       {
         <RoverListImages
           photos={photos}

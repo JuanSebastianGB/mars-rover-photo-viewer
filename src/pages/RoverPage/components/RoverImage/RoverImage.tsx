@@ -3,6 +3,7 @@ import { ButtonAddFavorite } from '../../../../components/ButtonAddFavorite';
 import { ButtonDeleteFavorite } from '../../../../components/ButtonDeleteFavorite';
 import { useStore } from '../../../../hooks';
 import { PhotoModel } from '../../../../models';
+import styles from './RoverImage.module.css';
 
 interface RoverImageProps {
   photo: PhotoModel;
@@ -14,41 +15,32 @@ const RoverImage: React.FC<RoverImageProps> = forwardRef(({ photo }, ref) => {
 
   const content = ref ? (
     //@ts-ignore
-    <div ref={ref}>
-      <img src={photo.img_src} alt={photo.img_src} />
-      <p>{photo.earth_date}</p>
-      <div>
-        sol:
-        {photo.sol}
+    <div ref={ref} className={styles.card}>
+      <img src={photo.img_src} alt={`${photo.id}`} className={styles.image} />
+      <div className={styles.details}>
+        <h2 className={styles.title}>{photo.rover.name}</h2>
+        <p className={styles.subtitle}>{photo.earth_date}</p>
+        <p className={styles.subtitle}>{photo.camera.full_name}</p>
+        {!inFavorite ? (
+          <ButtonAddFavorite photo={photo} />
+        ) : (
+          <ButtonDeleteFavorite photo={photo} />
+        )}
       </div>
-      <div>
-        camera:
-        {photo.camera.full_name}
-      </div>
-      {!inFavorite ? (
-        <ButtonAddFavorite photo={photo} />
-      ) : (
-        <ButtonDeleteFavorite photo={photo} />
-      )}
     </div>
   ) : (
-    <div>
-      <img src={photo.img_src} alt={photo.img_src} />
-      <p>{photo.earth_date}</p>
-      <div>
-        sol:
-        {photo.sol}
+    <div className={styles.card}>
+      <img src={photo.img_src} alt={`${photo.id}`} className={styles.image} />
+      <div className={styles.details}>
+        <h2 className={styles.title}>{photo.rover.name}</h2>
+        <p className={styles.subtitle}>{photo.earth_date}</p>
+        <p className={styles.subtitle}>{photo.camera.full_name}</p>
+        {!inFavorite ? (
+          <ButtonAddFavorite photo={photo} />
+        ) : (
+          <ButtonDeleteFavorite photo={photo} />
+        )}
       </div>
-      <div>
-        camera:
-        {photo.camera.full_name}
-      </div>
-
-      {!inFavorite ? (
-        <ButtonAddFavorite photo={photo} />
-      ) : (
-        <ButtonDeleteFavorite photo={photo} />
-      )}
     </div>
   );
 

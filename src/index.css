@@ -49,7 +49,7 @@ a {
 /* button:not([type='checkbox']), */
 /* input:not([type='checkbox']), */
 optgroup:not([type='checkbox']),
-select:not([type='checkbox']),
+/* select:not([type='checkbox']), */
 textarea:not([type='checkbox']) {
   margin: 0;
   padding: 0;
@@ -59,6 +59,11 @@ textarea:not([type='checkbox']) {
   vertical-align: baseline;
   outline: none;
   background: none;
+}
+
+select,
+input {
+  font-family: inherit;
 }
 
 /* Reset button styles */

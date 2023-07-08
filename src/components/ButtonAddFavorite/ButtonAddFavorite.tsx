@@ -19,7 +19,7 @@ const ButtonAddFavorite: React.FC<ButtonAddFavoriteProps> = ({ photo }) => {
         setLocalStorage('favorites', favorites);
       }}
     >
-      ADD FAVORITES
+      ADD FAVORITE
     </button>
   );
 };

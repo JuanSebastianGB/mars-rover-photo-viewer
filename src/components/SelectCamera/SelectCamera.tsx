@@ -12,9 +12,9 @@ const SelectCamera: React.FC<SelectCameraProps> = ({}) => {
     resetPage();
   };
   return (
-    <div className={styles.selectcamera}>
-      <h3>Select camera</h3>
-      <select onChange={handleChange}>
+    <div className={styles.selectCamera}>
+      <h3 className={styles.title}>Select camera</h3>
+      <select className={styles.select} onChange={handleChange}>
         <option value="">-----</option>
         {cameras.map((camera) => (
           <option key={camera} value={camera}>

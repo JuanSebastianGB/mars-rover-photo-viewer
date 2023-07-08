@@ -1,0 +1,44 @@
+.main-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #4285f4;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+.main-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.main-title:hover::before {
+  opacity: 1;
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.main-title span {
+  display: inline-block;
+  animation: slideIn 1s ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+.main-title:hover span {
+  opacity: 1;
+}

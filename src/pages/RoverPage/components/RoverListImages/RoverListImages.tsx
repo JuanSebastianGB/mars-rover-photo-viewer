@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import { PhotoModel } from '../../../../models';
 import { useSelectValue } from '../../../context';
 import { RoverImage } from '../RoverImage';
+import styles from './RoverListImages.module.css';
 
 export type RoverListImagesProps = {
   photos: PhotoModel[];
@@ -32,7 +33,7 @@ const RoverListImages: React.FC<RoverListImagesProps> = ({
   );
 
   return (
-    <div>
+    <div className={styles.roverlistimages}>
       {photos?.map((photo, index) => {
         if (photos.length === index + 1) {
           //@ts-ignore

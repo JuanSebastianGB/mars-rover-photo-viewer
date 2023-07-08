@@ -22,6 +22,7 @@ function App() {
               { link: menuLinks.SPIRIT, text: 'Rovers - spirit' },
             ]}
           />
+          <h1 className="main-title">Mars Rover Photo Viewer</h1>
           <SearchByFilter />
 
           <Routes>
