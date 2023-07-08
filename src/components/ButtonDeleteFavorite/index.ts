@@ -1,0 +1,1 @@
+export { default as ButtonDeleteFavorite } from './ButtonDeleteFavorite';

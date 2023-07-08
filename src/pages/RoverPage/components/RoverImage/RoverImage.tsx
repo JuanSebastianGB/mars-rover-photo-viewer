@@ -1,4 +1,7 @@
 import { forwardRef } from 'react';
+import { ButtonAddFavorite } from '../../../../components/ButtonAddFavorite';
+import { ButtonDeleteFavorite } from '../../../../components/ButtonDeleteFavorite';
+import { useStore } from '../../../../hooks';
 import { PhotoModel } from '../../../../models';
 
 interface RoverImageProps {
@@ -6,6 +9,9 @@ interface RoverImageProps {
 }
 
 const RoverImage: React.FC<RoverImageProps> = forwardRef(({ photo }, ref) => {
+  const favorites = useStore((state) => state.favorites);
+  const inFavorite = favorites.some((item) => item.id === photo.id);
+
   const content = ref ? (
     //@ts-ignore
     <div ref={ref}>
@@ -19,6 +25,11 @@ const RoverImage: React.FC<RoverImageProps> = forwardRef(({ photo }, ref) => {
         camera:
         {photo.camera.full_name}
       </div>
+      {!inFavorite ? (
+        <ButtonAddFavorite photo={photo} />
+      ) : (
+        <ButtonDeleteFavorite photo={photo} />
+      )}
     </div>
   ) : (
     <div>
@@ -32,6 +43,12 @@ const RoverImage: React.FC<RoverImageProps> = forwardRef(({ photo }, ref) => {
         camera:
         {photo.camera.full_name}
       </div>
+
+      {!inFavorite ? (
+        <ButtonAddFavorite photo={photo} />
+      ) : (
+        <ButtonDeleteFavorite photo={photo} />
+      )}
     </div>
   );
 
