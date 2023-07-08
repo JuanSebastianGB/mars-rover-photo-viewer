@@ -8,6 +8,9 @@ import { SelectValueProvider } from './pages/context';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RoverPage = lazy(() => import('./pages/RoverPage/RoverPage'));
+const FavoritesPage = lazy(
+  () => import('./pages/FavoritesPage/FavoritesPage/FavoritesPage')
+);
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
               { link: menuLinks.CURIOSITY, text: 'Rovers - curiosity' },
               { link: menuLinks.OPPORTUNITY, text: 'Rovers - opportunity' },
               { link: menuLinks.SPIRIT, text: 'Rovers - spirit' },
+              { link: menuLinks.FAVORITES, text: 'Favorites' },
             ]}
           />
           <h1 className="main-title">Mars Rover Photo Viewer</h1>
@@ -27,6 +31,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/rovers/:name" element={<RoverPage />} />
           </Routes>
         </Router>

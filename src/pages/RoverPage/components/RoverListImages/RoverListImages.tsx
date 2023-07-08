@@ -1,8 +1,8 @@
 import React, { useCallback, useRef } from 'react';
+import { GridContainer } from '../../../../components';
 import { PhotoModel } from '../../../../models';
 import { useSelectValue } from '../../../context';
 import { RoverImage } from '../RoverImage';
-import styles from './RoverListImages.module.css';
 
 export type RoverListImagesProps = {
   photos: PhotoModel[];
@@ -33,7 +33,7 @@ const RoverListImages: React.FC<RoverListImagesProps> = ({
   );
 
   return (
-    <div className={styles.roverlistimages}>
+    <GridContainer>
       {photos?.map((photo, index) => {
         if (photos.length === index + 1) {
           //@ts-ignore
@@ -41,7 +41,7 @@ const RoverListImages: React.FC<RoverListImagesProps> = ({
         }
         return <RoverImage key={photo.id} photo={photo} />;
       })}
-    </div>
+    </GridContainer>
   );
 };
 

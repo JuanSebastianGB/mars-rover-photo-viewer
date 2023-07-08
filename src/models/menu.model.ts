@@ -3,4 +3,5 @@ export enum menuLinks {
   CURIOSITY = '/rovers/curiosity',
   OPPORTUNITY = '/rovers/opportunity',
   SPIRIT = '/rovers/spirit',
+  FAVORITES = '/favorites',
 }
