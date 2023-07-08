@@ -13,7 +13,9 @@ function App() {
   return (
     <Suspense fallback={<> Loading...</>}>
       <Router>
-        <SearchByFilter />
+        <SelectValueProvider>
+          <SearchByFilter />
+        </SelectValueProvider>
         <Navbar
           links={[
             { link: menuLinks.HOME, text: 'Home' },

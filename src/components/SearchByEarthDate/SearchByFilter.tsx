@@ -11,9 +11,11 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
   const earthId = useId();
   const solId = useId();
   const { search, setSearch, changeApplySol } = useStore((state) => state);
+
   const [inputDate, setInputDate] = useState(
     !!search.earthDate ? search.earthDate : getCurrentDate()
   );
+
   const [inputSol, setInputSol] = useState(search.sol);
   const { resetPage } = useSelectValue();
 
@@ -51,7 +53,7 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
           type="checkbox"
           onChange={() => {
             changeApplySol();
-            setLocalStorage('applySol', search.applySol);
+            setLocalStorage('applySol', !search.applySol);
           }}
           checked={search.applySol}
         />

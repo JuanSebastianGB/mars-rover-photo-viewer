@@ -15,7 +15,6 @@ const ButtonAddFavorite: React.FC<ButtonAddFavoriteProps> = ({ photo }) => {
     <button
       className={styles.buttonaddfavorite}
       onClick={() => {
-        console.log('add to favorites', photo);
         addFavorite(photo);
         setLocalStorage('favorites', favorites);
       }}

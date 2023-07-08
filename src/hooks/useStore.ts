@@ -20,16 +20,16 @@ interface IStore {
 
 const useStore = create<IStore>()((set) => ({
   search: {
-    earthDate: getLocalStorage<string>('earthDate') || getCurrentDate(),
-    sol: getLocalStorage<number>('sol') || 0,
-    applySol: getLocalStorage<boolean>('applySol') || false,
+    earthDate: getLocalStorage('earthDate') || getCurrentDate(),
+    sol: getLocalStorage('sol') || 0,
+    applySol: getLocalStorage('applySol') || false,
   },
   setSearch: (search) => set(() => ({ search })),
   changeApplySol: () =>
     set((state) => ({
       search: { ...state.search, applySol: !state.search.applySol },
     })),
-  favorites: getLocalStorage<PhotoModel[]>('favorites') || [],
+  favorites: getLocalStorage('favorites') || [],
   addFavorite: (photo) =>
     set((state) => {
       const favorites = [...state.favorites, photo];

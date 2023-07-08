@@ -20,8 +20,8 @@ export const SelectValueProvider = ({ children }: Props) => {
 
   const changeSelectValue = (value: string) => setSelectValue(value);
   const incrementPage = () => setPage((prev) => prev + 1);
-
   const resetPage = () => setPage(1);
+
   const contextValue = {
     selectValue,
     changeSelectValue,
