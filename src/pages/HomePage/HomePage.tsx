@@ -4,7 +4,7 @@ interface FeatureProps {
   title: string;
   description: string;
 }
-function Feature({ title, description }: FeatureProps) {
+export function Feature({ title, description }: FeatureProps) {
   return (
     <div className={styles.feature}>
       <h2>{title}</h2>
