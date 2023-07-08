@@ -1,26 +1,17 @@
 /**
- * The function `getLocalStorage` retrieves an item from the local storage and returns it as the
- * specified type, or null if the item does not exist.
- * @param {string} key - The `key` parameter is a string that represents the key used to retrieve the
- * item from the local storage.
- * @returns The function `getLocalStorage` returns a value of type `T` or `null`.
+ * The function `getLocalStorage` retrieves a value from the browser's local storage by its key and returns it as a parsed JSON object, or null if the value is not found or cannot be parsed.
+ * @param {string} key - The `key` parameter is a string that represents the key of the item you want to retrieve from the local storage.
+ * @returns the value stored in the local storage with the given key. If the value exists and can be parsed as JSON, it will be returned as an object. Otherwise, it will return null.
  */
-export const getLocalStorage = <T>(key: string): T | null => {
-  const item =
-    typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
-
-  if (item) {
+export const getLocalStorage = (key: string) => {
+  const value = localStorage.getItem(key);
+  if (value) {
     try {
-      const parsedItem = JSON.parse(item) as T;
-      return parsedItem;
+      return JSON.parse(value);
     } catch (error) {
-      if (typeof item === 'boolean' || typeof item === 'number') {
-        return item as unknown as T;
-      }
       return null;
     }
   }
-
   return null;
 };
 
