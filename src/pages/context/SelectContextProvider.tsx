@@ -11,6 +11,7 @@ interface Props {
   children: React.ReactNode;
 }
 export const SelectValueProvider = ({ children }: Props) => {
+  if (!children) throw new Error('No children passed');
   const [selectValue, setSelectValue] = useState('');
 
   const changeSelectValue = (value: string) => setSelectValue(value);
