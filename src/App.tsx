@@ -6,7 +6,7 @@ import { FallbackLoader, Navbar, SearchByFilter } from './components';
 import { menuLinks } from './models';
 import { SelectValueProvider } from './pages/context';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RoverPage = lazy(() => import('./pages/RoverPage/RoverPage'));
 const FavoritesPage = lazy(
   () => import('./pages/FavoritesPage/FavoritesPage/FavoritesPage')

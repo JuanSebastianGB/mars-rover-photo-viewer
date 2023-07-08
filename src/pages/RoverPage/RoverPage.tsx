@@ -28,7 +28,6 @@ function RoverPage() {
     <Fragment>
       <Title>Rover {name}</Title>
       <SelectCamera />
-      <div>Qty {photos?.length}</div>
       {
         <RoverListImages
           photos={photos}
