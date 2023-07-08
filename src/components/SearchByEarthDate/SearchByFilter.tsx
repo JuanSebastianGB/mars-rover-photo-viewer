@@ -65,8 +65,10 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
               setLocalStorage('applySol', !search.applySol);
             }}
             checked={search.applySol}
+            className={styles.checkbox}
+            id="applySolCheckbox"
           />
-          <label htmlFor={solId} className={styles.checkboxLabel}>
+          <label htmlFor="applySolCheckbox" className={styles.checkboxLabel}>
             Implement sol search
           </label>
         </div>
