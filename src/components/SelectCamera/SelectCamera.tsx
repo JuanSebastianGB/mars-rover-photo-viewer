@@ -6,9 +6,10 @@ import styles from './SelectCamera.module.css';
 export type SelectCameraProps = {};
 
 const SelectCamera: React.FC<SelectCameraProps> = ({}) => {
-  const { changeSelectValue } = useSelectValue();
+  const { changeSelectValue, resetPage } = useSelectValue();
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     changeSelectValue(event.target.value);
+    resetPage();
   };
   return (
     <div className={styles.selectcamera}>

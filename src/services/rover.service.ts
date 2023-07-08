@@ -8,6 +8,7 @@ interface Props {
   sol?: number;
   applySol?: boolean;
   selectValue?: string;
+  page?: number;
 }
 
 /**
@@ -21,6 +22,7 @@ export const getRoverPhotos = async ({
   sol = 0,
   applySol = false,
   selectValue,
+  page = 0,
 }: Props) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   if (!API_KEY) throw new Error('API key is missing or invalid');
@@ -28,7 +30,8 @@ export const getRoverPhotos = async ({
   const URL =
     `${BASE_URL}${rover}/photos?earth_date=${earthDate}&api_key=${API_KEY}` +
     (applySol ? `&sol=${sol}` : '') +
-    (selectValue?.length ? `&camera=${selectValue}` : '');
+    (selectValue?.length ? `&camera=${selectValue}` : '') +
+    (page ? `&page=${page}` : '');
 
   const response = await fetch(URL);
   if (!response.ok) throw new Error('Failed to fetch data from the API');

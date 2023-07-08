@@ -2,6 +2,7 @@ import React, { useId, useState } from 'react';
 import { getCurrentDate } from '../../helpers';
 import { setLocalStorage } from '../../helpers/localStorage';
 import useStore from '../../hooks/useStore';
+import { useSelectValue } from '../../pages/context';
 import styles from './SearchByFilter.module.css';
 
 export type SearchByFilter = {};
@@ -14,6 +15,7 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
     !!search.earthDate ? search.earthDate : getCurrentDate()
   );
   const [inputSol, setInputSol] = useState(search.sol);
+  const { resetPage } = useSelectValue();
 
   const handleEarthDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputDate(e.target.value);
@@ -24,7 +26,6 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
     setLocalStorage('sol', e.target.value);
   };
 
-  console.log({ search });
   return (
     <div className={styles.searchbyearthdate}>
       <div>
@@ -50,7 +51,6 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
           type="checkbox"
           onChange={() => {
             changeApplySol();
-            // setApplySol((state) => !state);
             setLocalStorage('applySol', search.applySol);
           }}
           checked={search.applySol}
@@ -58,13 +58,14 @@ const SearchByFilter: React.FC<SearchByFilter> = () => {
         implement sol search
       </div>
       <button
-        onClick={() =>
+        onClick={() => {
           setSearch({
             earthDate: inputDate,
             sol: inputSol,
             applySol: search.applySol,
-          })
-        }
+          });
+          resetPage();
+        }}
       >
         Search
       </button>
