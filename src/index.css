@@ -47,7 +47,7 @@ a {
 
 /* Reset form elements */
 /* button:not([type='checkbox']), */
-input:not([type='checkbox']),
+/* input:not([type='checkbox']), */
 optgroup:not([type='checkbox']),
 select:not([type='checkbox']),
 textarea:not([type='checkbox']) {

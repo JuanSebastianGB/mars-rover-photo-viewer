@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import './App.css';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Navbar, SearchByFilter } from './components';
+import { FallbackLoader, Navbar, SearchByFilter } from './components';
 import { menuLinks } from './models';
 import { SelectValueProvider } from './pages/context';
 
@@ -11,10 +11,9 @@ const RoverPage = lazy(() => import('./pages/RoverPage/RoverPage'));
 
 function App() {
   return (
-    <Suspense fallback={<> Loading...</>}>
+    <Suspense fallback={<FallbackLoader />}>
       <SelectValueProvider>
         <Router>
-          <SearchByFilter />
           <Navbar
             links={[
               { link: menuLinks.HOME, text: 'Home' },
@@ -23,6 +22,8 @@ function App() {
               { link: menuLinks.SPIRIT, text: 'Rovers - spirit' },
             ]}
           />
+          <SearchByFilter />
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/rovers/:name" element={<RoverPage />} />

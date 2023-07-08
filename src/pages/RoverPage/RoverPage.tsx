@@ -1,5 +1,6 @@
+import { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import { SelectCamera } from '../../components';
+import { SelectCamera, Title } from '../../components';
 import { useRovers, useStore } from '../../hooks';
 import { RoverNameType } from '../../models';
 import { useSelectValue } from '../context';
@@ -25,7 +26,8 @@ function RoverPage() {
   if (error) return <h1>{error}</h1>;
 
   return (
-    <div>
+    <Fragment>
+      <Title>Rover {name}</Title>
       <h2>Rovers {name}</h2>
       <h2>Page {page} </h2>
       <SelectCamera />
@@ -39,7 +41,7 @@ function RoverPage() {
           hasNextPage={hasNextPage}
         />
       }
-    </div>
+    </Fragment>
   );
 }
 

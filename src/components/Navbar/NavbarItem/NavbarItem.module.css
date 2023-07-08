@@ -1,3 +1,22 @@
-.navbaritem {
-  
+.navbarItem {
+  display: inline-block;
+}
+
+.navbarLink {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbarLink:hover {
+  color: #ff0000;
+}
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+  .navbarItem {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
