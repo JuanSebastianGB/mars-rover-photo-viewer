@@ -12,30 +12,23 @@ const RoverPage = lazy(() => import('./pages/RoverPage/RoverPage'));
 function App() {
   return (
     <Suspense fallback={<> Loading...</>}>
-      <Router>
-        <SelectValueProvider>
+      <SelectValueProvider>
+        <Router>
           <SearchByFilter />
-        </SelectValueProvider>
-        <Navbar
-          links={[
-            { link: menuLinks.HOME, text: 'Home' },
-            { link: menuLinks.CURIOSITY, text: 'Rovers - curiosity' },
-            { link: menuLinks.OPPORTUNITY, text: 'Rovers - opportunity' },
-            { link: menuLinks.SPIRIT, text: 'Rovers - spirit' },
-          ]}
-        />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/rovers/:name"
-            element={
-              <SelectValueProvider>
-                <RoverPage />
-              </SelectValueProvider>
-            }
+          <Navbar
+            links={[
+              { link: menuLinks.HOME, text: 'Home' },
+              { link: menuLinks.CURIOSITY, text: 'Rovers - curiosity' },
+              { link: menuLinks.OPPORTUNITY, text: 'Rovers - opportunity' },
+              { link: menuLinks.SPIRIT, text: 'Rovers - spirit' },
+            ]}
           />
-        </Routes>
-      </Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/rovers/:name" element={<RoverPage />} />
+          </Routes>
+        </Router>
+      </SelectValueProvider>
     </Suspense>
   );
 }
