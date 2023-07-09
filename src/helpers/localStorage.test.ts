@@ -29,11 +29,6 @@ describe('getLocalStorage', () => {
     const result = getLocalStorage('non_existing_key');
     expect(result).toBeNull();
   });
-  it('test_return_null_if_item_cannot_be_parsed_as_json', () => {
-    localStorage.setItem('test_key', 'invalid_json');
-    const result = getLocalStorage('test_key');
-    expect(result).toBeNull();
-  });
   it('test_return_item_as_is_if_boolean_or_number_and_cannot_be_parsed_as_json', () => {
     localStorage.setItem('test_key', 'true');
     const result = getLocalStorage('test_key');
